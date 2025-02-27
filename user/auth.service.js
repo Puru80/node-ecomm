@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 const userRepository = require('./user.repository');
 const User = require("./User").User;
 
-// const UserEntity = require("./User").UserEntity;
-
 class AuthService {
     async register(email, password) {
         // const userRepository = dataSource.getRepository(UserRepository);

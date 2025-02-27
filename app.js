@@ -2,7 +2,9 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser')
+const authenticator = require('./user/auth.middleware');
 const authRouter = require('./user/auth.controller');
+const categoryRouter = require('./category/category.controller');
 
 const app = express();
 app.use(express.json());
@@ -12,7 +14,11 @@ app.use(
         extended: true,
     })
 );
+
+// This is the middleware that checks for the token in the header
+app.use(authenticator);
 app.use("/auth", authRouter);
+app.use("/category", categoryRouter);
 
 const PORT = process.env.PORT || 3000;
 
