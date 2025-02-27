@@ -1,6 +1,12 @@
 import {EntitySchema} from "typeorm";
 
-const ProductSchema = new EntitySchema({
+class Product {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+const ProductEntity = new EntitySchema({
     name: "Product",
     tableName: "products",
     columns: {
@@ -41,3 +47,5 @@ const ProductSchema = new EntitySchema({
         }
     }
 })
+
+module.exports = {Product, ProductEntity};
