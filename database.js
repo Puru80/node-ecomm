@@ -1,5 +1,6 @@
+const CategoryEntity = require("./category/Category").CategoryEntity;
 const DataSource = require('typeorm').DataSource;
-const User = require('./user/User').UserEntity;
+const UserEntity = require('./user/User').UserEntity;
 
 const database = new DataSource({
     type: 'postgres',
@@ -9,11 +10,11 @@ const database = new DataSource({
     password: 'postgres',
     database: 'postgres',
     synchronize: true,
-    entities: [User],
+    entities: [UserEntity, CategoryEntity],
 })
 
 database.initialize()
-    .then(async connection => {
+    .then(async () => {
         console.log("Database Connected");
     })
     .catch(error => console.log(error));
