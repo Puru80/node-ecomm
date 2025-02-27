@@ -18,7 +18,7 @@ router.get('/get', async (req, res) => {
     try {
         const categoryService = new CategoryService();
         const categories = await categoryService.getAll();
-        res.send(categories);
+        res.send({categories});
     } catch (error) {
         console.error(error);
         res.status(500).send({message: 'Error getting categories'});

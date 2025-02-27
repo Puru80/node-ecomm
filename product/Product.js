@@ -1,0 +1,43 @@
+import {EntitySchema} from "typeorm";
+
+const ProductSchema = new EntitySchema({
+    name: "Product",
+    tableName: "products",
+    columns: {
+        id: {
+            primary: true,
+            type: "int",
+            generated: true
+        },
+        name: {
+            type: "varchar"
+        },
+        createdAt: {
+            type: "timestamp",
+            createDate: true
+        },
+        updatedAt: {
+            type: "timestamp",
+            updateDate: true
+        }
+    },
+    relations: {
+        category: {
+            target: "Category",
+            type: "many-to-one",
+            joinColumn: true,
+            cascade: true
+        },
+        brand: {
+            target: "Brand",
+            type: "many-to-one",
+            joinColumn: true,
+            cascade: true
+        },
+        packaging: {
+            target: "Packaging",
+            type: "one-to-many",
+            cascade: true
+        }
+    }
+})
