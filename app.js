@@ -1,5 +1,8 @@
+require('dotenv').config();
+
 const express = require('express');
 const bodyParser = require('body-parser')
+const authRouter = require('./user/auth.controller');
 
 const app = express();
 app.use(express.json());
@@ -9,6 +12,7 @@ app.use(
         extended: true,
     })
 );
+app.use("/auth", authRouter);
 
 const PORT = process.env.PORT || 3000;
 
