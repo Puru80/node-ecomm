@@ -1,16 +1,21 @@
-const { Pool } = require('pg');
+const DataSource = require('typeorm').DataSource;
+const User = require('./user/User').UserEntity;
 
-const pool = new Pool({
-    user: 'postgres',
+const database = new DataSource({
+    type: 'postgres',
     host: 'localhost',
-    database: 'postgres',
-    password: 'postgres',
     port: 5432,
-});
+    username: 'postgres',
+    password: 'postgres',
+    database: 'postgres',
+    synchronize: true,
+    entities: [User],
+})
 
-pool.on('error', (err, client) => {
-    console.error('Unexpected error on idle client', err);
-    process.exit(-1);
-});
+database.initialize()
+    .then(async connection => {
+        console.log("Database Connected");
+    })
+    .catch(error => console.log(error));
 
-module.exports = pool;
+module.exports = database;
