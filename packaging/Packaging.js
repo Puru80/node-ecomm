@@ -1,15 +1,16 @@
 const EntitySchema = require("typeorm").EntitySchema;
 
-class Brand {
+class Packaging {
     constructor(name, description) {
         this.name = name;
         this.description = description;
     }
 }
 
-BrandSchema = new EntitySchema({
-    name: "Brand",
-    tableName: "brands",
+const PackagingEntity = new EntitySchema({
+    name: "Packaging",
+    target: Packaging,
+    tableName: "packages",
     columns: {
         id: {
             primary: true,
@@ -20,15 +21,17 @@ BrandSchema = new EntitySchema({
             type: "varchar"
         },
         description: {
-            type: "varchar"
+            type: "text"
         },
-        createdAt: {
+        created_at: {
             type: "timestamp",
             createDate: true
         },
-        updatedAt: {
+        updated_at: {
             type: "timestamp",
             updateDate: true
         }
     }
 })
+
+module.exports = {Packaging, PackagingEntity};

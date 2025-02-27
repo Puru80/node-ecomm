@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 const authenticator = require('./user/auth.middleware');
 const authRouter = require('./user/auth.controller');
 const categoryRouter = require('./category/category.controller');
+const brandRouter = require('./brand/brand.controller');
+// const productRouter = require('./product/product.controller');
+const packagingRouter = require('./packaging/packaging.controller');
 
 const app = express();
 app.use(express.json());
@@ -19,6 +22,9 @@ app.use(
 app.use(authenticator);
 app.use("/auth", authRouter);
 app.use("/category", categoryRouter);
+app.use("/brand", brandRouter);
+// app.use("/product", productRouter);
+app.use("/packaging", packagingRouter);
 
 const PORT = process.env.PORT || 3000;
 
