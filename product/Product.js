@@ -31,19 +31,18 @@ const ProductEntity = new EntitySchema({
         category: {
             target: "Category",
             type: "many-to-one",
-            joinColumn: true,
+            joinTable: true,
             cascade: true
         },
         brand: {
             target: "Brand",
             type: "many-to-one",
-            joinColumn: true,
+            joinTable: true,
             cascade: true
         },
         packaging: {
             target: "Packaging",
-            type: "one-to-many",
-            cascade: true
+            type: "one-to-many"
         }
     }
 })
