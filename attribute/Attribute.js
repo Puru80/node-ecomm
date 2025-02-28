@@ -9,7 +9,7 @@ class Attribute {
 
 const AttributeEntity = new EntitySchema({
     name: "attribute",
-    tableName: "attribute",
+    tableName: "attributes",
     columns: {
         id: {
             primary: true,

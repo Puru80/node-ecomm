@@ -8,6 +8,8 @@ const categoryRouter = require('./category/category.controller');
 const brandRouter = require('./brand/brand.controller');
 const productRouter = require('./product/product.controller');
 const packagingRouter = require('./packaging/packaging.controller');
+const attributeRouter = require('./attribute/attribute.controller');
+const attributeValueRouter = require('./attributevalues/attributevalues.controller');
 
 const app = express();
 app.use(express.json());
@@ -25,6 +27,8 @@ app.use("/category", categoryRouter);
 app.use("/brand", brandRouter);
 app.use("/product", productRouter);
 app.use("/packaging", packagingRouter);
+app.use("/attribute", attributeRouter);
+app.use("/attribute/value", attributeValueRouter);
 
 const PORT = process.env.PORT || 3000;
 
