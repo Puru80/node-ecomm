@@ -22,11 +22,11 @@ class CategoryService {
     }
 
     async getById(id) {
-        return await CategoryRepository.findOne(id);
+        return await CategoryRepository.findOneById(id);
     }
 
     async update(id, name, description) {
-        const category = await CategoryRepository.findOne(id);
+        const category = await CategoryRepository.findOneById(id);
         if (!category) {
             throw new Error('Category not found');
         }
@@ -39,7 +39,7 @@ class CategoryService {
     }
 
     async delete(id) {
-        const category = await CategoryRepository.findOne(id);
+        const category = await CategoryRepository.findOneById(id);
         if (!category) {
             throw new Error('Category not found');
         }

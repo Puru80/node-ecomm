@@ -1,4 +1,4 @@
-import {EntitySchema} from "typeorm";
+const EntitySchema = require('typeorm').EntitySchema;
 
 class Product {
     constructor(name) {

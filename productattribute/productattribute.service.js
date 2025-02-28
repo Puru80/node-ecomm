@@ -21,3 +21,5 @@ class ProductAttributeService {
         return await productAttributeRepository.deleteProductAttribute(id);
     }
 }
+
+module.exports = ProductAttributeService;
