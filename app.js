@@ -10,6 +10,7 @@ const productRouter = require('./product/product.controller');
 const packagingRouter = require('./packaging/packaging.controller');
 const attributeRouter = require('./attribute/attribute.controller');
 const attributeValueRouter = require('./attributevalues/attributevalues.controller');
+const productAttributeRouter = require('./productattribute/productAttribute.controller');
 
 const app = express();
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use("/product", productRouter);
 app.use("/packaging", packagingRouter);
 app.use("/attribute", attributeRouter);
 app.use("/attribute/value", attributeValueRouter);
+app.use("/product/attribute", productAttributeRouter);
 
 const PORT = process.env.PORT || 3000;
 
