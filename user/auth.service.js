@@ -33,7 +33,7 @@ class AuthService {
         return {
             status: "success",
             token: jwt.sign({userId: user.id}, process.env.JWT_SECRET_KEY, {
-                expiresIn: process.env.JWT_SECRET_KEY_EXPIRES,
+                expiresIn: process.env.JWT_SECRET_EXPIRY,
             })
         };
     }
