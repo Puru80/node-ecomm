@@ -3,7 +3,12 @@ const ProductEntity = require('./product').ProductEntity;
 
 const ProductRepository = database.getRepository(ProductEntity).extend({
     async findByName(name) {
-        return await this.findOne({ where: { name } });
+        return await this.findOne({where: {name}});
+    },
+
+    //Get all the products with their category and brand
+    async findAndCountWithRelations() {
+        return await this.findAndCount({relations: ['category', 'brand']});
     }
 })
 

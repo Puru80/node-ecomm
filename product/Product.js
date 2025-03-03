@@ -1,8 +1,10 @@
 const EntitySchema = require('typeorm').EntitySchema;
 
 class Product {
-    constructor(name) {
+    constructor(name, category, brand) {
         this.name = name;
+        this.category = category;
+        this.brand = brand;
     }
 }
 

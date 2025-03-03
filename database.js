@@ -1,5 +1,5 @@
 const {BrandEntity} = require("./brand/Brand");
-const ProductEntity = require("./product/Product");
+const ProductEntity = require("./product/Product").ProductEntity;
 const {PackagingEntity} = require("./packaging/Packaging");
 const {AttributeValueEntity} = require("./attributevalues/AttributeValues").AttributeValueEntity;
 const {AttributeEntity} = require("./attribute/Attribute");

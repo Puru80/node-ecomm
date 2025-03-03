@@ -4,9 +4,9 @@ const ProductService = require('./product.service');
 
 router.post('/create', async (req, res) => {
     try {
-        const {name, description, category, brand} = req.body;
+        const {name, category, brand} = req.body;
         const productService = new ProductService();
-        const product = await productService.create(name, description, category, brand);
+        const product = await productService.create(name, category, brand);
         res.send(product);
     } catch (error) {
         console.error(error);
@@ -40,9 +40,9 @@ router.get('/get/:id', async (req, res) => {
 router.put('/update/:id', async (req, res) => {
     try {
         const {id} = req.params;
-        const {name, description} = req.body;
+        const {name, category, brand} = req.body;
         const productService = new ProductService();
-        const product = await productService.update(id, name, description);
+        const product = await productService.update(id, name, category, brand);
         res.send(product);
     } catch (error) {
         console.error(error);
