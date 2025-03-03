@@ -22,11 +22,11 @@ class BrandService {
     }
 
     async getById(id) {
-        return await BrandRepository.findOne(id);
+        return await BrandRepository.findOneById(id);
     }
 
     async update(id, name, description) {
-        const brand = await BrandRepository.findOne(id);
+        const brand = await BrandRepository.findOneById(id);
         if (!brand) {
             throw new Error('Brand not found');
         }
@@ -39,7 +39,7 @@ class BrandService {
     }
 
     async delete(id) {
-        const brand = await BrandRepository.findOne(id);
+        const brand = await BrandRepository.findOneById(id);
         if (!brand) {
             throw new Error('Brand not found');
         }

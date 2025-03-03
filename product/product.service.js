@@ -2,7 +2,7 @@ const ProductRepository = require('./product.repository');
 const {Product} = require("./Product").Product;
 
 class ProductService {
-    async create(name, description) {
+    async create(name, description, category, brand) {
         const existingProduct = await ProductRepository.findByName(name);
         if (existingProduct) {
             throw new Error('Product already exists');
@@ -11,6 +11,8 @@ class ProductService {
         const newProduct = new Product();
         newProduct.name = name;
         newProduct.description = description;
+        newProduct.category = category;
+        newProduct.brand = brand;
 
         await ProductRepository.save([newProduct], { reload: false });
 
