@@ -1,12 +1,11 @@
 const router = require('express').Router();
 const AttributeService = require('./attribute.service');
 
-const attributeService = new AttributeService();
-
 router.post('/', async (req, res) => {
-    const { name, description } = req.body;
+    const { name, category } = req.body;
     try {
-        const attribute = await attributeService.createAttribute(name, description);
+        const attributeService = new AttributeService();
+        const attribute = await attributeService.createAttribute(name, category);
         res.status(201).json(attribute);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -15,6 +14,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
+        const attributeService = new AttributeService();
         const attributes = await attributeService.getAllAttributes();
         res.status(200).json(attributes);
     } catch (error) {
@@ -25,6 +25,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
     try {
+        const attributeService = new AttributeService();
         const attribute = await attributeService.getAttributeById(id);
         if (attribute) {
             res.status(200).json(attribute);
@@ -38,9 +39,10 @@ router.get('/:id', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     const { id } = req.params;
-    const { name, description } = req.body;
+    const { name, categories } = req.body;
     try {
-        const attribute = await attributeService.updateAttribute(id, name, description);
+        const attributeService = new AttributeService();
+        const attribute = await attributeService.updateAttribute(id, name, categories);
         if (attribute) {
             res.status(200).json(attribute);
         } else {
@@ -54,6 +56,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     const { id } = req.params;
     try {
+        let attributeService = new AttributeService();
         const attribute = await attributeService.deleteAttribute(id);
         if (attribute) {
             res.status(200).json(attribute);

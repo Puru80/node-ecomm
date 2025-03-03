@@ -7,7 +7,7 @@ class Attribute {
 }
 
 const AttributeEntity = new EntitySchema({
-    name: "attribute",
+    name: "Attribute",
     tableName: "attributes",
     columns: {
         id: {
@@ -18,15 +18,21 @@ const AttributeEntity = new EntitySchema({
         name: {
             type: "varchar"
         },
-        description: {
-            type: "text"
+        createdAt: {
+            type: "timestamp",
+            createDate: true
+        },
+        updatedAt: {
+            type: "timestamp",
+            updateDate: true
         }
     },
     relations: {
-        product: {
+        categories: {
             target: "Category",
-            type: "one-to-many",
-            inverseSide: "Attribute"
+            type: "many-to-many",
+            joinTable: true,
+            // joinColumns: ["id"],
         }
     }
 })

@@ -1,26 +1,36 @@
 const AttributeRepository = require('./attribute.repository');
-const { Attribute } = require('./Attribute');
-const trace_events = require("node:trace_events");
+const {Attribute} = require('./Attribute');
+const CategoryService = require('../category/category.service');
 
 class AttributeService {
-    async createAttribute(name, description) {
+    async createAttribute(name, categoryIds) {
         const attribute = new Attribute(name);
-        return await AttributeRepository.save([attribute], { reload: false });
+
+        if (await AttributeRepository.findByName(name)) {
+            throw new Error('Attribute already exists');
+        }
+
+        attribute.categories = await new CategoryService().findByIds(categoryIds);
+        // console.log(attribute.categories);
+
+        return await AttributeRepository.saveOne(attribute);
     }
 
     async getAllAttributes() {
-        return await AttributeRepository.find();
+        return await AttributeRepository.findAllWithRelations();
     }
 
     async getAttributeById(id) {
-        return await AttributeRepository.findOneBy({ id: id });
+        return await AttributeRepository.findByIdWithRelations(id);
     }
 
-    async updateAttribute(id, name) {
+    async updateAttribute(id, name, categories) {
         const attribute = await this.getAttributeById(id);
         if (attribute) {
             attribute.name = name;
-            return await AttributeRepository.save([attribute], { reload: false });
+            attribute.categories = await new CategoryService().findByIds(categories);
+
+            return await AttributeRepository.save([attribute]);
         }
         return null;
     }

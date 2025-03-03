@@ -48,6 +48,10 @@ class CategoryService {
 
         return category;
     }
+
+    async findByIds(ids) {
+        return await CategoryRepository.findByIds(ids);
+    }
 }
 
 module.exports = CategoryService;
