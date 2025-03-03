@@ -4,7 +4,7 @@ const trace_events = require("node:trace_events");
 
 class AttributeService {
     async createAttribute(name, description) {
-        const attribute = new Attribute(name, description);
+        const attribute = new Attribute(name);
         return await AttributeRepository.save([attribute], { reload: false });
     }
 
@@ -16,11 +16,10 @@ class AttributeService {
         return await AttributeRepository.findOneBy({ id: id });
     }
 
-    async updateAttribute(id, name, description) {
+    async updateAttribute(id, name) {
         const attribute = await this.getAttributeById(id);
         if (attribute) {
             attribute.name = name;
-            attribute.description = description;
             return await AttributeRepository.save([attribute], { reload: false });
         }
         return null;

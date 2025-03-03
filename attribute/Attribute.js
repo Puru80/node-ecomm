@@ -1,9 +1,8 @@
 const EntitySchema = require('typeorm').EntitySchema;
 
 class Attribute {
-    constructor(name, description) {
+    constructor(name) {
         this.name = name;
-        this.description = description;
     }
 }
 
