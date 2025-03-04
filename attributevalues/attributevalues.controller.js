@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
     try {
         const attributeValue = await attributeValuesService.create(req.body);
         res.status(201).json(attributeValue);
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
     try {
         const attributeValue = await attributeValuesService.update(req.params.id, req.body);
         if (!attributeValue) {
@@ -45,7 +45,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     try {
         const attributeValue = await attributeValuesService.delete(req.params.id);
         if (!attributeValue) {

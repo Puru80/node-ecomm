@@ -17,6 +17,14 @@ const AttributeValueEntity = new EntitySchema({
         },
         value: {
             type: "varchar"
+        },
+        createdAt: {
+            type: "timestamp",
+            createDate: true
+        },
+        updatedAt: {
+            type: "timestamp",
+            updateDate: true
         }
     },
     relations: {
