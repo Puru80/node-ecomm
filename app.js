@@ -31,7 +31,7 @@ app.use("/brand", brandRouter);
 app.use("/product", productRouter);
 app.use("/packaging", packagingRouter);
 app.use("/attribute", attributeRouter);
-app.use("/attribute/value", attributeValueRouter);
+app.use("/attribute/values", attributeValueRouter);
 app.use("/product/attribute", productAttributeRouter);
 app.use("/product/variant", productVariantRouter);
 

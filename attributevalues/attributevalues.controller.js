@@ -3,6 +3,7 @@ const attributeValuesService = require('./attributevalues.service');
 
 router.get('/', async (req, res) => {
     try {
+        console.log("Get all attribute values");
         const attributeValues = await attributeValuesService.getAll();
         res.status(200).json(attributeValues);
     } catch (error) {
@@ -12,6 +13,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
+        console.log("Get attribute value by id");
         const attributeValue = await attributeValuesService.getById(req.params.id);
         if (!attributeValue) {
             return res.status(404).json({ message: 'Attribute Value not found' });

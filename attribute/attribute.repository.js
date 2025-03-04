@@ -16,7 +16,7 @@ const AttributeRepository = database.getRepository(AttributeEntity).extend({
     },
 
     async findAllWithRelations() {
-        return await AttributeRepository.find({
+        return await AttributeRepository.findAndCount({
             relations: {
                 categories: true
             }

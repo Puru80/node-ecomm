@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const AttributeService = require('./attribute.service');
 
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
     const { name, category } = req.body;
     try {
         const attributeService = new AttributeService();
@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', async (req, res) => {
+router.get('/get/all', async (req, res) => {
     try {
         const attributeService = new AttributeService();
         const attributes = await attributeService.getAllAttributes();
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/get/:id', async (req, res) => {
     const { id } = req.params;
     try {
         const attributeService = new AttributeService();
@@ -37,7 +37,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/update/:id', async (req, res) => {
     const { id } = req.params;
     const { name, categories } = req.body;
     try {
@@ -53,7 +53,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
         let attributeService = new AttributeService();
