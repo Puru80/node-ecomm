@@ -42,6 +42,10 @@ class AttributeService {
         }
         return null;
     }
+
+    async findByIds(attributeIds) {
+        return await AttributeRepository.findByIds(attributeIds);
+    }
 }
 
 module.exports = AttributeService;

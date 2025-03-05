@@ -32,7 +32,14 @@ const AttributeEntity = new EntitySchema({
             target: "Category",
             type: "many-to-many",
             joinTable: true,
-            // joinColumns: ["id"],
+        },
+        attributeValues: {
+            target: "AttributeValue",
+            type: "one-to-many",
+            inverseSide: "attribute",
+            loaded: true,
+            eager: true,
+            joinColumns: ["id"],
         }
     }
 })

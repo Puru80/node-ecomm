@@ -31,7 +31,8 @@ const AttributeValueEntity = new EntitySchema({
         attribute: {
             target: "Attribute",
             type: "many-to-one",
-            inverseSide: "AttributeValue"
+            inverseSide: "AttributeValue",
+            joinColumn: true
         }
     }
 });

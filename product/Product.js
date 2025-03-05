@@ -40,7 +40,8 @@ const ProductEntity = new EntitySchema({
             target: "Brand",
             type: "many-to-one",
             joinTable: true,
-            cascade: true
+            cascade: true,
+            eager: true
         },
         packaging: {
             target: "Packaging",

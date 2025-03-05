@@ -1,14 +1,38 @@
-const ProductVariant = require('./ProductVariant').ProductVariant;
+const ProductVariant = require('./ProductVariant').ProductVariantEntity;
 const database = require('../database');
 
 const ProductVariantRepository = database.getRepository(ProductVariant).extend({
+
+    async findByProductId(productId) {
+        return await this.findOneBy({
+            product: {
+                id: productId
+            }
+        })
+    },
+
     async findByProductIdAndAttributeId(productId, attributeId) {
-        return await this.createQueryBuilder("product_variant")
-            .innerJoinAndSelect("product_variants.product", "product")
-            .innerJoinAndSelect("product_variants.attribute", "attribute")
-            .where("product.id = :id", { id: productId })
-            .andWhere("attribute.id = :id ", { id: attributeId })
-            .getMany();
+        return await this.findBy({
+            product: {
+                id: productId
+            },
+            attribute: {
+                id: attributeId
+            }
+        });
+    },
+
+    async saveProductVariant(productVariant) {
+        return await this.save(productVariant);
+    },
+
+    async getAllProductVariants() {
+        return await this.findAndCount({
+            relations: {
+                product: true,
+                attribute: true
+            }
+        });
     }
 });
 

@@ -8,8 +8,6 @@ class ProductVariant{
         this.product = product;
         this.attribute = attribute;
     }
-
-
 }
 
 const ProductVariantEntity = new EntitySchema({
@@ -36,12 +34,14 @@ const ProductVariantEntity = new EntitySchema({
             target: "Product",
             type: "many-to-one",
             joinColumn: true,
+            eager: true
             // inverseSide: "productVariants"
         },
         attribute: {
-            target: "AttributeValue",
+            target: "Attribute",
             type: "many-to-many",
             joinTable: true,
+            eager: true
             // inverseSide: "productVariants"
         }
     }

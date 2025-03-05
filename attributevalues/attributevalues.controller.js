@@ -3,7 +3,6 @@ const attributeValuesService = require('./attributevalues.service');
 
 router.get('/', async (req, res) => {
     try {
-        console.log("Get all attribute values");
         const attributeValues = await attributeValuesService.getAll();
         res.status(200).json(attributeValues);
     } catch (error) {
