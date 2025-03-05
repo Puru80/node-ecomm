@@ -30,6 +30,13 @@ router.put("/update/:id", async (request, response) => {
     response.status(200).send(updatedProductVariant);
 });
 
+router.delete("/delete/:id", async (request, response) => {
+    const {id} = request.params;
+    const productVariantService = new ProductVariantService();
+    await productVariantService.deleteProductVariant(id);
+    response.status(200).send({message: "Product Variant deleted successfully"});
+});
+
 module.exports = router;
 
 

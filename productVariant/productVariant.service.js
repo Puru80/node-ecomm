@@ -37,7 +37,6 @@ class ProductVariantService {
         const attributeValues = {};
 
         let productVariant = await ProductVariantRepository.findByProductId(id);
-        console.log(productVariant)
 
         if (!productVariant) {
             throw new Error("Product Variant not found");
