@@ -2,17 +2,17 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser')
-const authenticator = require('./user/auth.middleware');
+const authenticator = require('./src/user/auth.middleware');
 
-const authRouter = require('./user/auth.controller');
-const categoryRouter = require('./category/category.controller');
-const brandRouter = require('./brand/brand.controller');
-const productRouter = require('./product/product.controller');
-const packagingRouter = require('./packaging/packaging.controller');
-const attributeRouter = require('./attribute/attribute.controller');
-const attributeValueRouter = require('./attributevalues/attributevalues.controller');
+const authRouter = require('./src/user/auth.controller');
+const categoryRouter = require('./src/category/category.controller');
+const brandRouter = require('./src/brand/brand.controller');
+const productRouter = require('./src/product/product.controller');
+const packagingRouter = require('./src/packaging/packaging.controller');
+const attributeRouter = require('./src/attribute/attribute.controller');
+const attributeValueRouter = require('./src/attributevalues/attributevalues.controller');
 // const productAttributeRouter = require('./productattribute/productAttribute.controller');
-const productVariantRouter = require('./productvariant/productVariant.controller');
+const productVariantRouter = require('./src/productVariant/productVariant.controller');
 
 const app = express();
 app.use(express.json());

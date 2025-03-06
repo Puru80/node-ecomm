@@ -1,4 +1,4 @@
-const database = require('../database');
+const database = require('../../database');
 const PackagingEntity = require('./Packaging').PackagingEntity;
 
 const PackagingRepository = database.getRepository(PackagingEntity).extend({

@@ -1,4 +1,4 @@
-const database = require('../database');
+const database = require('../../database');
 const BrandEntity = require('./Brand').BrandEntity;
 
 const BrandRepository = database.getRepository(BrandEntity).extend({

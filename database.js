@@ -1,14 +1,14 @@
 const DataSource = require('typeorm').DataSource;
 
-const {BrandEntity} = require("./brand/Brand");
-const {ProductEntity} = require("./product/Product");
-const {PackagingEntity} = require("./packaging/Packaging");
-const {AttributeValueEntity} = require("./attributevalues/AttributeValues");
-const {AttributeEntity} = require("./attribute/Attribute");
-const {ProductAttributeEntity} = require("./productattribute/ProductAttribute");
-const {ProductVariantEntity} = require("./productvariant/ProductVariant");
-const CategoryEntity = require("./category/Category").CategoryEntity;
-const UserEntity = require('./user/User').UserEntity;
+const {BrandEntity} = require("./src/brand/Brand");
+const {ProductEntity} = require("./src/product/Product");
+const {PackagingEntity} = require("./src/packaging/Packaging");
+const {AttributeValueEntity} = require("./src/attributevalues/AttributeValues");
+const {AttributeEntity} = require("./src/attribute/Attribute");
+const {ProductAttributeEntity} = require("./src/productattribute/ProductAttribute");
+const {ProductVariantEntity} = require("./src/productVariant/ProductVariant");
+const CategoryEntity = require("./src/category/Category").CategoryEntity;
+const UserEntity = require('./src/user/User').UserEntity;
 
 const database = new DataSource({
     type: 'postgres',

@@ -1,4 +1,4 @@
-const database = require('../database');
+const database = require('../../database');
 const CategoryEntity = require('./Category').CategoryEntity;
 
 const CategoryRepository = database.getRepository(CategoryEntity).extend({

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const ProductAttributeService = require('./productAttribute.service');
+const ProductAttributeService = require('./productattribute.service');
 
 const productAttributeService = new ProductAttributeService();
 

@@ -1,5 +1,5 @@
-const database = require('../database');
-const ProductEntity = require('./product').ProductEntity;
+const database = require('../../database');
+const ProductEntity = require('./Product').ProductEntity;
 
 const ProductRepository = database.getRepository(ProductEntity).extend({
     async findByName(name) {

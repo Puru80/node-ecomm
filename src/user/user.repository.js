@@ -1,4 +1,4 @@
-const database = require("../database");
+const database = require("../../database");
 const UserEntity = require("./User").UserEntity;
 
 const UserRepository = database.getRepository(UserEntity)

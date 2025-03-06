@@ -1,4 +1,4 @@
-const database = require('../database');
+const database = require('../../database');
 const AttributeValue = require('./AttributeValues').AttributeValueEntity;
 
 const AttributeValueRepository = database.getRepository(AttributeValue).extend({

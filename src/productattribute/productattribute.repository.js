@@ -1,4 +1,4 @@
-const database = require('../database');
+const database = require('../../database');
 const ProductAttribute = require('./ProductAttribute').ProductAttributeEntity;
 
 const ProductAttributeRepository = database.getRepository(ProductAttribute).extend({

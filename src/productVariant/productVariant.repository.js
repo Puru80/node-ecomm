@@ -1,5 +1,5 @@
 const ProductVariant = require('./ProductVariant').ProductVariantEntity;
-const database = require('../database');
+const database = require('../../database');
 
 const ProductVariantRepository = database.getRepository(ProductVariant).extend({
 
