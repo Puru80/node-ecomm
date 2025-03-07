@@ -16,4 +16,26 @@ class UnitService {
 
         return await UnitRepository.save(unit);
     }
+
+    async updateUnit(id, name) {
+        const unit = await this.findById(id);
+        if (!unit) {
+            return null;
+        }
+
+        unit.name = name;
+
+        return await UnitRepository.save(unit);
+    }
+
+    async deleteUnit(id) {
+        const unit = await this.findById(id);
+        if (!unit) {
+            return null;
+        }
+
+        return await UnitRepository.remove(unit);
+    }
 }
+
+module.exports = new UnitService();
