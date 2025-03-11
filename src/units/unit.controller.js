@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const { name } = req.body;
-        const unit = await UnitService.createUnit(name);
+        const { name, packaging } = req.body;
+        const unit = await UnitService.createUnit(name, packaging);
         res.status(201).json(unit);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -34,8 +34,8 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const { name } = req.body;
-        const unit = await UnitService.updateUnit(req.params.id, name);
+        const { name, packaging } = req.body;
+        const unit = await UnitService.updateUnit(req.params.id, name, packaging);
         if (!unit) {
             return res.status(404).json({ message: 'Unit not found' });
         }
@@ -56,3 +56,5 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+module.exports = router;

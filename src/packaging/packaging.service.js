@@ -10,6 +10,10 @@ class PackagingService {
         return await PackagingRepository.findOneById(id);
     }
 
+    async findByIds(ids) {
+        return await PackagingRepository.findByIds(ids);
+    }
+
     async getAllPackagings() {
         return await PackagingRepository.findAndCount();
     }

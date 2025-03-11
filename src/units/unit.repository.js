@@ -3,7 +3,11 @@ const database = require('../../database');
 
 const UnitRepository = database.getRepository(UnitEntity).extend({
     async getAllUnits() {
-        return await this.find();
+        return await this.find({
+            relations: {
+                packaging: true
+            }
+        });
     }
 });
 

@@ -9,6 +9,7 @@ const {ProductAttributeEntity} = require("./src/productattribute/ProductAttribut
 const {ProductVariantEntity} = require("./src/productVariant/ProductVariant");
 const CategoryEntity = require("./src/category/Category").CategoryEntity;
 const UserEntity = require('./src/user/User').UserEntity;
+const UnitEntity = require('./src/units/Unit').UnitEntity;
 
 const database = new DataSource({
     type: 'postgres',
@@ -26,7 +27,8 @@ const database = new DataSource({
         AttributeEntity,
         AttributeValueEntity,
         ProductAttributeEntity,
-        ProductVariantEntity
+        ProductVariantEntity,
+        UnitEntity
     ],
 })
 

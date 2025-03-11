@@ -1,5 +1,6 @@
 const UnitRepository = require('./unit.repository');
 const Unit = require('./Unit').Unit;
+const packagingService = require('../packaging/packaging.service');
 
 class UnitService {
     async getAll() {
@@ -10,20 +11,22 @@ class UnitService {
         return await UnitRepository.findOneBy({id});
     }
 
-    async createUnit(name) {
+    async createUnit(name, packaging) {
         const unit = new Unit();
         unit.name = name;
+        unit.packaging = await new packagingService().findByIds(packaging);
 
         return await UnitRepository.save(unit);
     }
 
-    async updateUnit(id, name) {
+    async updateUnit(id, name, packaging) {
         const unit = await this.findById(id);
         if (!unit) {
-            return null;
+            throw new Error('Unit not Found');
         }
 
         unit.name = name;
+        unit.packaging = await new packagingService().findByIds(packaging);
 
         return await UnitRepository.save(unit);
     }

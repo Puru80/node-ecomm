@@ -31,6 +31,19 @@ const PackagingEntity = new EntitySchema({
             type: "timestamp",
             updateDate: true
         }
+    }, relations: {
+        unit: {
+            target: "Unit",
+            type: "many-to-one",
+            inverseSide: "packaging",
+            joinColumn: true,
+        },
+        products: {
+            target: "Product",
+            type: "one-to-many",
+            inverseSide: "packaging",
+            // eager: true
+        }
     }
 })
 

@@ -37,9 +37,7 @@ const AttributeEntity = new EntitySchema({
             target: "AttributeValue",
             type: "one-to-many",
             inverseSide: "attribute",
-            loaded: true,
             eager: true,
-            joinColumns: ["id"],
         }
     }
 })

@@ -28,7 +28,8 @@ const UnitEntity = new EntitySchema({
             default: () => "CURRENT_TIMESTAMP",
             onUpdate: "CURRENT_TIMESTAMP"
         }
-    }, relations: {
+    },
+    relations: {
         packaging: {
             target: "Packaging",
             type: "one-to-many",
