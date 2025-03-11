@@ -34,7 +34,7 @@ class UnitService {
     async deleteUnit(id) {
         const unit = await this.findById(id);
         if (!unit) {
-            return null;
+            throw new Error('Unit not Found');
         }
 
         return await UnitRepository.remove(unit);

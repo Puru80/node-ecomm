@@ -1,9 +1,8 @@
 const EntitySchema = require('typeorm').EntitySchema;
 
 class Unit{
-    constructor(name, packaging) {
+    constructor(name) {
         this.name = name;
-        this.packaging = packaging;
     }
 }
 

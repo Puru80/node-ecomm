@@ -51,7 +51,7 @@ router.delete('/:id', async (req, res) => {
         if (!unit) {
             return res.status(404).json({ message: 'Unit not found' });
         }
-        res.status(204).send();
+        res.status(200).send({message: 'Unit deleted successfully'});
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
