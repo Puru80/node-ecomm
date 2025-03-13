@@ -34,6 +34,12 @@ CategoryEntity = new EntitySchema({
             type: "timestamp",
             updateDate: true
         }
+    }, relations: {
+        brand: {
+            target: "Brand",
+            type: "one-to-many",
+            inverseSide: "category"
+        }
     }
 })
 

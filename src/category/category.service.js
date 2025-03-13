@@ -2,7 +2,7 @@ const CategoryRepository = require('./category.repository');
 const {Category} = require("./Category");
 
 class CategoryService {
-    async create(name, description) {
+    async create(name, description, categoryies) {
         const existingCategory = await CategoryRepository.findByName(name);
         if (existingCategory) {
             throw new Error('Category already exists');

@@ -4,9 +4,9 @@ const CategoryService = require('./category.service');
 
 router.post('/create', async (req, res) => {
     try {
-        const {name, description} = req.body;
+        const {name, description, categories} = req.body;
         const categoryService = new CategoryService();
-        const category = await categoryService.create(name, description);
+        const category = await categoryService.create(name, description, categories);
         res.send(category);
     } catch (error) {
         console.error(error);

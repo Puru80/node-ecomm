@@ -30,6 +30,12 @@ const BrandEntity = new EntitySchema({
             type: "timestamp",
             updateDate: true
         }
+    }, relations: {
+        category: {
+            target: "Category",
+            type: "one-to-many",
+            inverseSide: "brand"
+        }
     }
 })
 

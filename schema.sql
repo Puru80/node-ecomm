@@ -98,14 +98,23 @@ CREATE TABLE IF NOT EXISTS units
 );
 
 -- Create indexes
-CREATE INDEX idx_products_brand_id ON products (brand_id);
+CREATE INDEX if not exists idx_products_brand_id ON products (brand_id);
 
-CREATE INDEX idx_products_category_id ON products (category_id);
+CREATE INDEX if not exists idx_products_category_id ON products (category_id);
 
-CREATE INDEX idx_products_package_id ON products (package_id);
+CREATE INDEX if not exists idx_products_package_id ON products (package_id);
 
-CREATE INDEX idx_product_attributes_product_id ON product_attributes (product_id);
+CREATE INDEX if not exists idx_product_attributes_product_id ON product_attributes (product_id);
 
-CREATE INDEX idx_product_attributes_attribute_id ON product_attributes (attribute_id);
+CREATE INDEX if not exists idx_product_attributes_attribute_id ON product_attributes (attribute_id);
 
-CREATE INDEX idx_product_variants_product_id ON product_variants (product_id);
+CREATE INDEX if not exists idx_product_variants_product_id ON product_variants (product_id);
+
+
+-- Create a foreign key constraint between brand and categories on a new column
+ALTER TABLE brands
+    ADD COLUMN brand_id INTEGER;
+
+ALTER TABLE brands
+    ADD CONSTRAINT fk_brands_category
+        FOREIGN KEY (brand_id) REFERENCES brands (id);
