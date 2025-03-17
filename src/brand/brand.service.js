@@ -1,8 +1,9 @@
 const BrandRepository = require('./brand.repository');
 const {Brand} = require("./Brand");
+const CategoryService = require('../category/category.service');
 
 class BrandService {
-    async create(name, description) {
+    async create(name, description, categoryIds) {
         const existingBrand = await BrandRepository.findByName(name);
         if (existingBrand) {
             throw new Error('Brand already exists');
@@ -11,6 +12,16 @@ class BrandService {
         const newBrand = new Brand();
         newBrand.name = name;
         newBrand.description = description;
+        newBrand.categories = [];
+
+        if (categoryIds && categoryIds.length > 0) {
+            const categoryService = new CategoryService();
+            let categories = await categoryService.findByIds(categoryIds);
+
+            if (categories.length !== categoryIds.length) {
+                throw new Error('Some categories not found');
+            }
+        }
 
         await BrandRepository.save([newBrand], { reload: false });
 

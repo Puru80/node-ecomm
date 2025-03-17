@@ -4,9 +4,9 @@ const BrandService = require('./brand.service');
 
 router.post('/create', async (req, res) => {
     try {
-        const {name, description} = req.body;
+        const {name, description, categories} = req.body;
         const brandService = new BrandService();
-        const brand = await brandService.create(name, description);
+        const brand = await brandService.create(name, description, categories);
         res.send(brand);
     } catch (error) {
         console.error(error);
